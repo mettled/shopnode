@@ -1,11 +1,12 @@
-//@ts-nocheck
 import dotenv from 'dotenv';
 dotenv.config({ path: __dirname + '/.env' });
-import path from 'path';
+
+import helmet from 'helmet';
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import compression from 'compression';
 import csrf from 'csurf';
 import flash from 'connect-flash';
 import dbConnect from './core/db';
@@ -51,6 +52,8 @@ app.use(
 app.use(multer.single('avatar'));
 app.use(csrf());
 app.use(flash());
+app.use(helmet());
+app.use(compression());
 app.use(user);
 app.use(variables);
 
