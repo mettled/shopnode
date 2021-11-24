@@ -1,0 +1,57 @@
+extends ../index.pug
+
+block content
+  .auth
+    .row
+      .col.s12
+        ul.tabs
+          li.tab.col.s6
+            a.active(href="#login") Login
+          li.tab.col.s6
+            a(href="#register") Register
+      .col.s6.offset-s3#login
+        if messageLogin.length > 0
+          p.alert #{messageLogin}
+        h1 Login 
+        form(action="/auth/login" method="POST")
+          .input-field
+            input.validate#email(type="text" name="email" )
+            label(for="email") Email
+            span.helper-text(data-error="Enter email")
+
+          .input-field
+            input.validate#password(type="password" name="password" )
+            label(for="password") Password
+            span.helper-text(data-error="Enter password")
+          input(type="hidden" name="_csrf" value= csrf)
+          .login-actions
+            button.btn.btn-primary(type="submit") Login
+            a(href="/auth/reset") Forgot password ? 
+
+
+      .col.s6.offset-s3#register
+        if messageRegister.length > 0
+          p.alert #{messageRegister}
+        h1 Register
+        form(action="/auth/register" method="POST")
+          .input-field
+            input.validate#remail(type="text" name="email" )
+            label(for="remail") Email
+            span.helper-text(data-error="Enter email")
+
+          .input-field
+            input.validate#name(type="text" name="name" )
+            label(for="name") Name
+            span.helper-text(data-error="Enter name")
+
+          .input-field
+            input.validate#password(type="password" name="password" )
+            label(for="password") Password
+            span.helper-text(data-error="Enter password")
+
+          .input-field
+            input.validate#confirm(type="password" name="rpassword" )
+            label(for="confirm") Enter password again
+            span.helper-text(data-error="Enter password")
+          input(type="hidden" name="_csrf" value= csrf)
+          button.btn.btn-primary(type="submit") Register

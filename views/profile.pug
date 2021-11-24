@@ -1,0 +1,34 @@
+extends index.pug
+
+
+block content
+  h4 Profile
+  .profile-page
+    .avatarImg
+      if avatarUlr
+        img(src= avatarUlr)
+      else
+        p No avatar image
+
+    .avatarInfo
+      form(action="/profile" method="POST" enctype="multipart/form-data")
+        p Your email: 
+          strong #{email}
+
+        .input-field
+          input.validate(id="name" name="name" type="text" required value= name)
+          label(for="name") Ваше имя
+          span.helper-text(data-error="This field required")
+
+        input(type="hidden" name="email" value= email)
+
+        .file-field.input-field
+          .btn
+            span Аватар
+            input(type="file" name="avatar")
+          .file-path-wrapper
+            input.file-path.validate(type="text")
+        
+        input(type="hidden" name="_csrf" value= csrf)
+       
+        button.btn(type="submit") Save

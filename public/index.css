@@ -1,0 +1,88 @@
+.nav-wrapper {
+  padding: 0 2rem;
+}
+
+.price {
+  font-size: 2rem;
+  color: green;
+  font-weight: bold;
+}
+
+.course {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.course img {
+  max-width: 600px;
+  height: auto;
+}
+
+.card-action.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-delete {
+  margin-top: 2rem;
+}
+.auth {
+  padding-top: 1rem;
+}
+
+.alert {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: rgba(255, 0, 0, 0.3);
+  color: red;
+}
+
+.btn-change-count {
+  display: flex;
+}
+
+.btn-change-count button {
+  margin: 0 2px;
+}
+
+.login-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.courses {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 0.3em;
+  min-width: 27em;
+}
+
+.card-image img {
+  width: auto !important;
+  height: 20em;
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+}
+.avatarImg {
+  width: 60%;
+}
+
+.avatarImg img {
+  width: 70%;
+}
+
+.profile-page {
+  display: flex;
+}

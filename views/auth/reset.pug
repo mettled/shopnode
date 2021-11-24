@@ -1,0 +1,12 @@
+extends ../index.pug
+
+block content
+  h1 Restore password
+  form(action="/auth/reset" method="POST")
+    .input-field
+      input.validate#email(type="text" name="email" required)
+      label(for="email") Enter Email
+      span.helper-text(data-error="Enter email")
+    input(type="hidden" name="_csrf" value= csrf)
+    .login-actions
+      button.btn.btn-primary(type="submit") Reset

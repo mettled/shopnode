@@ -1,0 +1,20 @@
+nav
+  .nav-wrapper
+    a.brand-logo(href="/") Courses APP
+    ul.right.hide-on-med-and-down#nav-mobile
+      //- li(class= active==='index' ? 'active' : null)
+      //-   a(href="/") Main
+      li(class= active==='courses' ? 'active' : null)
+        a(href="/courses") Courses
+      if isAuth  
+        li(class= active==='cart' ? 'active' : null)
+          a(href="/cart") Cart
+        li(class= active==='orders' ? 'active' : null)
+          a(href="/orders") My orders
+        li(class= active==='profile' ? 'active' : null)
+          a(href="/profile") My profile  
+        li
+          a(href="/auth/logout") Logout
+      else
+        li(class= active==='auth' ? 'active' : null)
+          a(href="/auth") Login/Register          

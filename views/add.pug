@@ -1,0 +1,30 @@
+extends index.pug
+
+block content
+
+  style.
+    h4 {
+      padding-bottom: 2rem
+    }
+
+  h4 Add new course
+  if courseMessage && courseMessage.length > 0
+    p.alert #{courseMessage}
+  form(action="/course/add" method="POST")
+    .input-field
+      input.validate#name(type="text" name="name" value= name)
+      label(for="name") Course name
+      span.helper-text(data-error="Enter Course name")
+
+    .input-field
+      input.validate#price(type="number" name="price" min="1"  value= price)
+      label(for="price") Course price
+      span.helper-text(data-error="Enter Course price")
+    
+    .input-field
+      input.validate#img(type="text" name="img"  value= img)
+      label(for="img") Course image
+      span.helper-text(data-error="Enter Course URL image")
+
+    input(type="hidden" name="_csrf" value= csrf)
+    button.btn.btn-primary(type="submit") Add course

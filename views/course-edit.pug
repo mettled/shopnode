@@ -1,0 +1,36 @@
+extends index.pug
+
+block content
+
+  style.
+    h4 {
+      padding-bottom: 2rem
+    }
+
+  h4 Edit course
+
+  form(action=`/course/edit` method="POST")
+    .input-field
+      input.validate#name(type="text" name="name" required value= name)
+      label(for="name") Course name
+      span.helper-text(data-error="Enter Course name")
+
+    .input-field
+      input.validate#price(type="number" name="price" min="1" required value= price)
+      label(for="price") Course price
+      span.helper-text(data-error="Enter Course price")
+    
+    .input-field
+      input.validate#img(type="text" name="img" required value= img)
+      label(for="img") Course image
+      span.helper-text(data-error="Enter Course URL image")
+    input(type="hidden" name="_csrf" value= csrf)
+    input(type="hidden" name="id" value= id)
+
+    button.btn.btn-primary(type="submit") Edit course
+  
+  
+  form.form-delete(action=`/course/delete` method="POST")
+    input(type="hidden" name="_csrf" value= csrf)
+    input(type="hidden" name="id" value= id)
+    button.btn.red(type="submit") Delete course

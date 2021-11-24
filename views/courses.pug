@@ -1,0 +1,29 @@
+extends index.pug
+
+
+mixin item({ _id: id, name, price, img, userId}) 
+  .card
+    .card-image
+      img(src= img)
+    .card-content
+      span.card-title #{name}
+      p.price= price
+    .card-action.actions
+      a(href=`/course/${id}` target='_blank') Open course
+      if isAuth
+        if loginUserId === userId._id
+          a(href=`/course/edit/${id}`) Edit course
+      form(action="cart/add" method="POST")
+        input(type="hidden" name="_csrf" value= csrf)
+        input(type="hidden" name='id' value= id)
+        button.btn.btn-primary(type="submit") Add to cart
+
+block content
+  h4 Courses
+  a.waves-effect.waves-light.btn(href="course/add") Add Course
+  if courses.length === 0
+    p No courses
+  else
+   .courses
+      each course in courses
+        +item(course)

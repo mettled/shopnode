@@ -1,0 +1,53 @@
+extends index.pug
+
+mixin item(count, { name, price, img, _id: id })
+  tr
+    td= name
+    td= count
+      div.btn-change-count
+        form(action="/cart/change", method="post")
+          input(type="hidden" name="id" value= id)
+          input(type="hidden" name="change" value= "add")
+          input(type="hidden" name="_csrf" value= csrf)
+          button.btn.btn-primary(data-id="add", type="submit") +
+        form(action="/cart/change", method="post")
+          input(type="hidden" name="id" value= id)
+          input(type="hidden" name="change" value= "sub")
+          input(type="hidden" name="_csrf" value= csrf)
+          button.btn.btn-primary(data-id="add", type="submit") -        
+    td= price * count
+    td
+      form(action=`/cart/delete`, method="post")
+        input(type="hidden" name="id" value= id)
+        input(type="hidden" name="_csrf" value= csrf)
+        button.btn.btn-primary.js-remove(type="submit") Delete
+
+
+block content
+  .cart
+    h4 Cart
+
+    - const length = Object.keys(courses).length
+    if length === 0
+      p Cart is empty
+    else
+      table
+        thead
+          tr
+            td Name
+            td Count
+            td Price per a pcs
+            td Actions
+        tbody
+          each course in courses
+            - const { count, courseId } = course;
+            +item(count, courseId)
+      
+      p
+        strong Price: 
+        span.price= price
+
+      form(action="/orders", method="post")
+        input(type="hidden" name="cartId" value= cartId)
+        input(type="hidden" name="_csrf" value= csrf)
+        button.btn.btn-primary(type="submit") Order
