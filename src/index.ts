@@ -26,9 +26,6 @@ import error404 from './middlewares/error404';
 import path from 'path';
 
 const app = express();
-// сделать закрытым пароль
-//
-
 app.set('views', './src/views');
 app.set('view engine', 'pug');
 
