@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: __dirname + '/.env' });
 
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import express from 'express';
 import bodyParser from 'body-parser';
 import session from 'express-session';
@@ -23,18 +23,18 @@ import profileRouter from './routes/profile';
 import multer from './middlewares/multer';
 import user from './middlewares/user';
 import error404 from './middlewares/error404';
+import path from 'path';
 
 const app = express();
 // сделать закрытым пароль
 //
 
-app.set('views', './views');
-app.set('views', './views');
+app.set('views', './src/views');
 app.set('view engine', 'pug');
 
 const sessionDBConnection = dbConnect();
-app.use(express.static('public'));
-app.use('/images', express.static('images'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -52,7 +52,7 @@ app.use(
 app.use(multer.single('avatar'));
 app.use(csrf());
 app.use(flash());
-app.use(helmet());
+// app.use(helmet());
 app.use(compression());
 app.use(user);
 app.use(variables);
@@ -68,5 +68,5 @@ app.use('/profile', profileRouter);
 app.use(error404);
 
 app.listen(process.env.PORT, () => {
-  console.log('SERVER RUNNING!!!');
+  console.log('SERVER RUNNING!!!', process.env.PORT);
 });

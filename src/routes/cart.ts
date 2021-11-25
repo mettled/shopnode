@@ -33,7 +33,7 @@ router.post('/change', auth, async (req: express.Request, res: express.Response)
 });
 
 router.post('/delete', auth, async (req: express.Request, res: express.Response): Promise<void> => {
-  //@ts-expect-error
+  //@ts-ignore
   const user: IUser = req.user;
   const courseId = req.body.id;
 
