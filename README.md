@@ -1,7 +1,7 @@
 ## About app
 
 Node sandbox
-[https://progect-mini-slack.herokuapp.com](https://progect-mini-slack.herokuapp.com)
+[node-estore](https://node-estore.herokuapp.com/)
 
 ## Setup
 
