@@ -1,11 +1,13 @@
+doctype html
+html
   include includes/head
 
+  body
+    .course
+      h4 Course - #{name}
+      img(src= img, alt= name)
 
-  .course
-    h4 Course - #{name}
-    img(src= img, alt= name)
-
-    p.price #{price}
+      p.price #{price}
 
 
-  include includes/footer
+    include includes/footer
