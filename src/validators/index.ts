@@ -37,12 +37,6 @@ const userRegisterValidator = [
     })
     .withMessage('Password must be greater than 3 and contain at least one number'),
 
-  body('password')
-    .isStrongPassword({
-      minNumbers: 1,
-    })
-    .withMessage('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, and one number'),
-
   body('rpassword')
     .isStrongPassword({ minLength: 3 })
     .withMessage('Password must have at least 1 number, and min length 8 symbols')
