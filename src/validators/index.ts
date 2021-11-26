@@ -38,8 +38,21 @@ const userRegisterValidator = [
     .withMessage('Password must be greater than 3 and contain at least one number'),
 
   body('rpassword')
-    .isStrongPassword({ minLength: 3 })
-    .withMessage('Password must have at least 1 number, and min length 8 symbols')
+    .isStrongPassword({
+      minLength: 3,
+      minLowercase: 0,
+      minUppercase: 0,
+      minNumbers: 1,
+      minSymbols: 0,
+      returnScore: false,
+      pointsPerUnique: 0,
+      pointsPerRepeat: 0,
+      pointsForContainingLower: 0,
+      pointsForContainingUpper: 0,
+      pointsForContainingNumber: 0,
+      pointsForContainingSymbol: 0,
+    })
+    .withMessage('Password must be greater than 3 and contain at least one number')
     .custom((value, { req }) => {
       const { password } = req.body;
       if (value !== password) {
